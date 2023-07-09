@@ -41,15 +41,13 @@
       }]
 
       findIdBtn.addEventListener('click', () => {
-        const failBg = document.querySelector('.popFail .failBg');
-        const failBox = document.querySelector('.popFail .failBox');
-        const failBtn = document.querySelector('.failBox .failBtn');
+        const failBg = document.getElementById('failBg');
+        const failBox = document.getElementById('failBox');
+        const failBtn = document.getElementById('failBtn');
         const foundId = document.getElementById('foundId');
-        const successBg = document.querySelector('.popSuccess .successBg');
-        const successBox = document.querySelector('.popSuccess .successBox');
-        const successBtn = document.querySelector('.successBox .successBtn');
-
-
+        const successBg = document.getElementById('successBg');
+        const successBox = document.getElementById('successBox');
+        const successBtn = document.getElementById('successBtn');
 
         for (let i = 0; i < userList.length; i++) {
           if (userName.value == userList[i].name && userTel.value == userList[i].tel) {
@@ -66,7 +64,9 @@
               userName.value = "";
               userTel.value = "";
             });
-          } else {
+            break;
+          }
+          if (i == userList.length - 1) {
             window.scrollTo(0, 0);
             body.style.overflow = 'hidden';
             failBg.style.display = 'block';
@@ -79,6 +79,7 @@
               userName.value = "";
               userTel.value = "";
               userName.focus();
+              return true;
             })
           }
         }

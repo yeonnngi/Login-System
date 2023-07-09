@@ -35,6 +35,7 @@
           body.style.overflow = 'hidden';
           pwBox.style.display = 'block';
           pwBg.style.display = 'block';
+          return true;
         }
 
         function hide() {
@@ -50,9 +51,12 @@
         const comparePwBg = document.getElementById('comparePwBg')
         const comparePw = document.getElementById('comparePwBox')
         const comparePwBtn = document.getElementById('comparePwBtn')
+        const fillPwBg = document.getElementById('fillPwBg')
+        const fillPwBox = document.getElementById('fillPwBox')
+        const fillPwBtn = document.getElementById('fillPwBtn')
         const finishBg = document.getElementById('finishBg')
         const finishBox = document.getElementById('finishBox')
-        const PassBtn = document.getElementById('PassBtn')
+        const finishBtn = document.getElementById('finishBtn')
 
 
         if (userPw1.value !== userPw2.value) {
@@ -66,6 +70,24 @@
             comparePw.style.display = 'none';
             body.style.overflow = 'visible';
             userPw2.select();
+            return true;
+          });
+        }
+      } //comparePw()
+
+      checkBtn.addEventListener('click', () => {
+        if (userPw1.value == '' || userPw2.value == '') {
+          window.scrollTo(0, 0);
+          body.style.overflow = 'hidden';
+          fillPwBg.style.display = 'block';
+          fillPwBox.style.display = 'block';
+
+          fillPwBtn.addEventListener('click', () => {
+            fillPwBg.style.display = 'none';
+            fillPwBox.style.display = 'none';
+            body.style.overflow = 'visible';
+            userPw2.select();
+            return true;
           })
         } else {
           window.scrollTo(0, 0);
@@ -73,11 +95,11 @@
           finishBg.style.display = 'block';
           finishBox.style.display = 'block';
 
-          PassBtn.addEventListener('click', () => {
+          finishBtn.addEventListener('click', () => {
             location.href = './login.html'
           })
-        }
-      } //comparePw()
+        } //PassBtn
+      });
     });
   </script>
 </head>

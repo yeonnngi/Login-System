@@ -50,7 +50,8 @@
         const successBtn = document.getElementById('successBtn');
 
         for (let i = 0; i < userList.length; i++) {
-          if (userName.value == userList[i].name && userId.value == userList[i].id && userTel.value == userList[i].tel) {
+          if (userName.value == userList[i].name && userId.value == userList[i].id && userTel.value == userList[
+              i].tel) {
             window.scrollTo(0, 0);
             body.style.overflow = 'hidden';
             successBg.style.display = 'block';
@@ -58,8 +59,10 @@
 
             successBtn.addEventListener('click', () => {
               location.href = './reset_pw.html'
-            })
-          } else {
+            });
+            break;
+          }
+          if (i == userList.length - 1) {
             window.scrollTo(0, 0);
             body.style.overflow = 'hidden';
             failBg.style.display = 'block';
@@ -73,6 +76,7 @@
               userId.value = "";
               userTel.value = "";
               userName.focus();
+              return true;
             })
           }
         }
@@ -87,7 +91,7 @@
     <div id="successBg" class="popBg successBg"></div>
     <div id="successBox" class="popBox successBox">
       <i class="fas fa-check-circle"></i>
-      <p>인증이 완료되었습니다.<br/>확인 버튼을 눌러 비밀번호를 재설정 해주세요.</p>
+      <p>인증이 완료되었습니다.<br />확인 버튼을 눌러 비밀번호를 재설정 해주세요.</p>
       <button id="successBtn" class="successBtn"><span>확인</span></button>
     </div><!-- //popUp_id -->
   </section>

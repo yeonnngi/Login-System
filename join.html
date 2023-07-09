@@ -18,8 +18,10 @@
     const userId = document.getElementById('user_id');
     const userPw1 = document.getElementById('user_pw1');
     const userPw2 = document.getElementById('user_pw2');
+    const userName = document.getElementById('user_name');
     const birthYear = document.getElementById('year');
-    const birthDate = document.getElementById('date');
+    const birthMonth = document.getElementById('month');
+    const birthDate = document.getElementById('day');
     const telSecond = document.getElementById('tel_second');
     const telThird = document.getElementById('tel_third');
     const emailId = document.getElementById('emailId');
@@ -42,7 +44,7 @@
       const idChk = document.getElementById('id_box')
       const idChkBtn = document.getElementById('idChkBtn')
       const regId = /^[a-zA-Z0-9]{5,16}$/;
-      
+
       idChkBtn.addEventListener('click', hide)
 
       if (!regId.test(userId.value)) {
@@ -56,8 +58,9 @@
         idChkBg.style.display = 'none';
         idChk.style.display = 'none';
         body.style.overflow = 'visible';
-        userId.value="";
+        userId.value = "";
         userId.focus();
+        return true;
       }
     } //checkId();
 
@@ -76,7 +79,6 @@
         body.style.overflow = 'hidden';
         pwChkBg.style.display = 'block';
         pwChk.style.display = 'block';
-        userPw1.select();
       }
 
       function hide() {
@@ -84,6 +86,7 @@
         pwChk.style.display = 'none';
         body.style.overflow = 'visible';
         userPw1.select();
+        return true;
       }
     } //checkPw()
 
@@ -100,7 +103,6 @@
         body.style.overflow = 'hidden';
         comparePwBg.style.display = 'block';
         comparePw.style.display = 'block';
-        userPw2.select()
       }
 
       function hide() {
@@ -108,6 +110,7 @@
         comparePw.style.display = 'none';
         body.style.overflow = 'visible';
         userPw2.select();
+        return true;
       }
     } //comparePw()
 
@@ -134,7 +137,7 @@
 
 
     function checkCode() {
-      
+
       const codeChkBg = document.getElementById('codeChk_bg')
       const codeChkBox = document.getElementById('codeChk_box')
       const codeChkBtn = document.getElementById('codeChkBtn')
@@ -147,13 +150,13 @@
         body.style.overflow = 'hidden';
         codeChkBg.style.display = 'block';
         codeChkBox.style.display = 'block';
-        friendsCode.select();
 
         codeChkBtn.addEventListener('click', () => {
           codeChkBg.style.display = 'none';
           codeChkBox.style.display = 'none';
           body.style.overflow = 'visible';
           friendsCode.select();
+          return true;
         })
       } else {
         window.scrollTo(0, 0);
@@ -175,7 +178,8 @@
       const joinBox = document.getElementById('join_box');
       const joinChkBtn = document.getElementById('joinChkBtn');
 
-      if (userId.value == '' || userPw1.value == '' || userPw2.value == '' || birthYear.value == '' || birthDate.value == '' || telSecond.value == '' || telThird.value == '' || emailId.value == '' || textEmail.value == '') {
+      if (userId.value == '' || userPw1.value == '' || userPw2.value == '' || userName.value == '' || telSecond
+        .value == '' || telThird.value == '' || emailId.value == '' || textEmail.value == '') {
         window.scrollTo(0, 0);
         body.style.overflow = 'hidden';
         joinBg.style.display = 'block';
@@ -185,30 +189,32 @@
           joinBg.style.display = 'none';
           joinBox.style.display = 'none';
           body.style.overflow = 'visible';
+          return true;
         })
       } else {
-        location.href = './success.html';
+        location.href = './success.html'
       }
     }
   });
 </script>
 
 <!-- ------------------ popup ------------------ -->
+
 <body>
   <section class="popUp_id kor">
     <div id="id_bg" class="popUp_bg"></div>
     <div id="id_box" class="popUp_box">
       <i class="fas fa-exclamation-circle"></i>
-      <p>아이디는 하나 이상의 영문 소문자, 숫자,<br/>특수문자를 포함한 5~12자로 설정해주세요.</p>
+      <p>아이디는 하나 이상의 영문 소문자, 숫자,<br />특수문자를 포함한 5~12자로 설정해주세요.</p>
       <button id="idChkBtn"><span>확인</span></button>
     </div><!-- //popUp_id -->
   </section>
-  
+
   <section class="popUp_pw">
     <div id="pw_bg" class="popUp_bg"></div>
     <div id="pw_box" class="popUp_box">
       <i class="fas fa-exclamation-circle"></i>
-      <p>비밀번호는 하나 이상의 영문 대/소문자,<br/>숫자, 특수문자를 포함한 5~16자로 설정해주세요.</p>
+      <p>비밀번호는 하나 이상의 영문 대/소문자,<br />숫자, 특수문자를 포함한 5~16자로 설정해주세요.</p>
       <button id="pwChkBtn"><span>확인</span></button>
     </div><!-- //popUp_pw -->
   </section>
@@ -217,7 +223,7 @@
     <div id="comparePw_bg" class="popUp_bg"></div>
     <div id="comparePw_box" class="popUp_box">
       <i class="fas fa-exclamation-circle"></i>
-      <p>비밀번호가 일치하지 않습니다.<br/></p>
+      <p>비밀번호가 일치하지 않습니다.<br /></p>
       <button id="comparePwBtn"><span>확인</span></button>
     </div><!-- //popUpPwChk_pwChk -->
   </section>
@@ -268,27 +274,34 @@
           <li class="id">
             <p class="essential">* 항목은 필수 입력사항입니다.</p>
             <label for="user_id">아이디<span> *</span></label>
-            <input type="text" id="user_id" class="join_box" placeholder="영문 소문자, 숫자를 포함한 5~12자" onfocus="this.placeholder=''" onblur="this.placeholder='영문 소문자, 숫자를 포함한 5~12자'" size="12" required autofocus>
+            <input type="text" id="user_id" class="join_box" placeholder="영문 소문자, 숫자를 포함한 5~12자"
+              onfocus="this.placeholder=''" onblur="this.placeholder='영문 소문자, 숫자를 포함한 5~12자'" size="12" required
+              autofocus>
           </li><!-- //id -->
 
           <li class="pw">
             <label for="user_pw1">비밀번호<span> *</span></label>
-            <input type="password" id="user_pw1" class="join_box" placeholder="영문 대/소문자, 숫자, 특수문자를 포함한 5~16자" onfocus="this.placeholder=''" onblur="this.placeholder='영문 대/소문자, 숫자, 특수문자를 포함한 5~16자'" size="16" required>
+            <input type="password" id="user_pw1" class="join_box" placeholder="영문 대/소문자, 숫자, 특수문자를 포함한 5~16자"
+              onfocus="this.placeholder=''" onblur="this.placeholder='영문 대/소문자, 숫자, 특수문자를 포함한 5~16자'" size="16"
+              required>
           </li><!-- //pw -->
 
           <li class="pw_chk">
             <label for="user_pw2">비밀번호 확인<span> *</span></label>
-            <input type="password" id="user_pw2" class="join_box" placeholder="비밀번호를 한 번 더 입력해 주세요." onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 한 번 더 입력해 주세요.'" size="16" required>
+            <input type="password" id="user_pw2" class="join_box" placeholder="비밀번호를 한 번 더 입력해 주세요."
+              onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 한 번 더 입력해 주세요.'" size="16" required>
           </li><!-- //pw_chk -->
 
           <li class="name">
             <label for="user_name">이름<span> *</span></label>
-            <input type="text" id="user_name" class="join_box" placeholder="이름을 입력해 주세요." onfocus="this.placeholder=''" onblur="this.placeholder='이름을 입력해 주세요.'"  required>
+            <input type="text" id="user_name" class="join_box" placeholder="이름을 입력해 주세요." onfocus="this.placeholder=''"
+              onblur="this.placeholder='이름을 입력해 주세요.'" required>
           </li><!-- //name -->
 
           <li class="birthday">
             <label for="birthday">생년월일<br>
-              <input type="text" id="year" class="birth_box" placeholder="년도(4자)" onfocus="this.placeholder=''" onblur="this.placeholder='년도(4자)'" maxlength="4">
+              <input type="text" id="year" class="birth_box" placeholder="년도(4자)" onfocus="this.placeholder=''"
+                onblur="this.placeholder='년도(4자)'" maxlength="4">
               <select name="mm" id="month" class="birth_box">
                 <option value="">월</option>
                 <option value="">---------------------</option>
@@ -366,7 +379,8 @@
           <li class="email">
             <label for="user_email">이메일<span> *</span></label>
             </br>
-            <input type="text" id="emailId" value="" class="mail_box" placeholder="EMAIL" onfocus="this.placeholder=''" onblur="this.placeholder='EMAIL'" required>
+            <input type="text" id="emailId" value="" class="mail_box" placeholder="EMAIL" onfocus="this.placeholder=''"
+              onblur="this.placeholder='EMAIL'" required>
             <label for="">@</label>
             <input type="text" name="textEmail" id="textEmail" class="mail_box" onchange="changeEmail();" required>
             <select name="emailSel" id="emailSel">
@@ -382,7 +396,8 @@
           <li class="kakao">
             <label for="friendsCode">카카오톡 플러스 친구 혜택(+3000원)</label>
             <br>
-            <input type="text" id="friendsCode" class="kakao_box" placeholder="괄호 안 코드 7자 입력" onfocus="this.placeholder=''" onblur="this.placeholder='괄호 안 코드 7자 입력'" maxlength="7">
+            <input type="text" id="friendsCode" class="kakao_box" placeholder="괄호 안 코드 7자 입력"
+              onfocus="this.placeholder=''" onblur="this.placeholder='괄호 안 코드 7자 입력'" maxlength="7">
             <button id="codeBtn">확인</button>
             <ul>
               <li>· 카카오 플러스친구 채널을 추가하고 일광전구가 보낸 코드 번호를 확인해보세요.</li>
