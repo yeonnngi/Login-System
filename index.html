@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0 maximum-scale=1.5, minimum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+  <title>login_join</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const loginBtn = document.querySelector('.login_btn');
+      const loginTitle = document.querySelector('.login_title h3');
+      const JoinBtn = document.querySelector('.join_btn');
+      const joinTitle = document.querySelector('.join_title h3');
+
+      loginBtn.addEventListener('mouseover', function changeColor() {
+        loginTitle.style.color = '#D09CFA';
+      })
+
+      loginBtn.addEventListener('mouseout', function backColor() {
+        loginTitle.style.color = '#f4f1eb';
+      })
+
+      JoinBtn.addEventListener('mouseover', function changeColor() {
+        joinTitle.style.color = '#D09CFA';
+      })
+
+      JoinBtn.addEventListener('mouseout', function backColor() {
+        joinTitle.style.color = '#f4f1eb';
+      })
+
+
+    });
+  </script>
+
+</head>
+
+<body>
+
+  <main class="main">
+    <div class="login_bg"></div>
+    <div class="login_icon">
+      <img src="./images/login_icon.png" alt="locked_sample">
+    </div>
+    <h1 class="eng">login <br />system</h1>
+    <div class="login_menu eng">
+      <ul>
+        <li>
+          <div class="login_title title">
+            <h3>login</h3>
+            <p>If you are already a user<br /> of this systems.</p>
+          </div>
+
+          <div class="login_btn btn">
+            <a href="./login.html"><i class="fas fa-chevron-right"></i></a>
+          </div>
+        </li>
+
+        <li>
+          <div class="join_title title">
+            <h3>join</h3>
+            <p>Create New Account.</p>
+          </div>
+
+          <div class="join_btn btn">
+            <a href="./join_terms.html"><i class="fas fa-chevron-right"></i></a>
+          </div>
+
+        </li><!-- //join -->
+      </ul>
+    </div><!-- //login_menu -->
+  </main><!-- //main -->
+
+</body>
+
+</html>
